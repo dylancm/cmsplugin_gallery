@@ -1,9 +1,9 @@
-from inline_ordering.admin import OrderableStackedInline
+from inline_ordering.admin import OrderableTabularInline
 import forms
 import models
 
 
-class ImageInline(OrderableStackedInline):
+class ImageInline(OrderableTabularInline):
 
     model = models.Image
 
@@ -14,3 +14,8 @@ class ImageInline(OrderableStackedInline):
             return db_field.formfield(**kwargs)
         return super(ImageInline, self).\
             formfield_for_dbfield(db_field, **kwargs)
+
+
+class YoutubeInline(OrderableTabularInline):
+
+    model = models.Youtube

@@ -40,7 +40,16 @@ class Image(Orderable):
     src_width = models.PositiveSmallIntegerField(_("Image height"), editable=False, null=True)
     title = models.CharField(_("Title"), max_length=255, blank=True)
     alt = models.TextField(_("Alt text"), blank=True)
-    caption = models.TextField(_("Caption"), max_length=1000, blank=True)
 
     def __unicode__(self):
         return self.title or self.alt or str(self.pk)
+
+
+class Youtube(Orderable):
+
+    gallery = models.ForeignKey(GalleryPlugin, verbose_name=_("Gallery"))
+    src = models.CharField(_("Youtube URL"), max_length=255)
+    title = models.CharField(_("Title"), max_length=255, blank=True)
+
+    def __unicode__(self):
+        return self.title or self.src
