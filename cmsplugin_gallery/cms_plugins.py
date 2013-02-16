@@ -4,7 +4,6 @@ from django.utils.translation import ugettext_lazy as _
 
 import admin
 import models
-import sys
 
 
 class CMSGalleryPlugin(CMSPluginBase):
@@ -26,9 +25,6 @@ class CMSGalleryPlugin(CMSPluginBase):
             elif ('v=' in vid_id):
                 vid_id = vid_id.split('=')[-1]
             vid.thumb_url = "http://img.youtube.com/vi/%s/2.jpg" % (vid_id, )
-
-        for v in videos:
-            print >> sys.stderr, dir(v)
 
         context.update({
                         'images': instance.image_set.all(),
